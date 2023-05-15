@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterOutlet} from "@angular/router";
 import { ShopComponent } from './shop/shop.component';
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
@@ -17,12 +20,13 @@ import { ShopComponent } from './shop/shop.component';
     HomeComponent,
     ShopComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        RouterOutlet
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    RouterOutlet,
+    FormsModule,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

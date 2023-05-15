@@ -1,2 +1,28 @@
-<p>shop works!</p>
-<div style="margin: 40px 40px;">asdasdasd</div>
+<section>
+  <article class="shop">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-xl-6">
+          <div class="form-outline">
+            <label class="form-label" for="form1">Search</label>
+            <input type="search" id="form1" class="form-control" (ngModelChange)="fetchParts($event)" [(ngModel)]="partName">
+          </div>
+          <div *ngFor="let part of parts">
+            <div class="part">
+              <h3>{{part.name}}</h3>
+              <p>{{part.description}}</p>
+              <h4>{{part.price}}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 col-md-12">
+          <div *ngFor="let part of parts">
+            <h3>{{part.name}}</h3>
+            <p>{{part.description}}</p>
+            <h4>{{part.price}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>

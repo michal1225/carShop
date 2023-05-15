@@ -1,0 +1,14 @@
+.shop {
+  padding: 100px;
+  background: #f1f1f1;
+  text-align: justify;
+  font-family: "Ubuntu", sans-serif
+}
+.part {
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border-style: solid;
+  border-size: 2px;
+  border-color: #ff9438;
+}
