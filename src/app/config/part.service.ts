@@ -23,8 +23,8 @@ export class PartService {
 
   }
 
-  deletePart() {
-
+  deletePart(id: number) {
+    return this.http.delete(this.path + "/" + id).subscribe(() => console.log('Delete successful'));
   }
 
   deleteAllParts() {

@@ -12,3 +12,15 @@
   border-size: 2px;
   border-color: #ff9438;
 }
+button {
+  background: #ff9438;
+  border-style: none;
+  display: inline-flex;
+  margin-left: 50px;
+}
+h4{
+  display: inline-flex;
+}
+.form1{
+  margin-top: 20px;
+}

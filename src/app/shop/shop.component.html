@@ -5,22 +5,27 @@
         <div class="col-md-12 col-xl-6">
           <div class="form-outline">
             <label class="form-label" for="form1">Search</label>
-            <input type="search" id="form1" class="form-control" (ngModelChange)="fetchParts($event)" [(ngModel)]="partName">
+            <input type="search" id="form1" class="form-control" (ngModelChange)="fetchParts($event)"
+                   [(ngModel)]="partName">
           </div>
           <div *ngFor="let part of parts">
             <div class="part">
               <h3>{{part.name}}</h3>
               <p>{{part.description}}</p>
               <h4>{{part.price}}</h4>
+              <button type="button" class="btn btn-primary btn-md" (click)="onDeletePart(part.id)">Kup teraz</button>
             </div>
           </div>
         </div>
         <div class="col-xl-6 col-md-12">
-          <div *ngFor="let part of parts">
-            <h3>{{part.name}}</h3>
-            <p>{{part.description}}</p>
-            <h4>{{part.price}}</h4>
-          </div>
+          <h3>Dodaj część</h3>
+          <form>
+            <input class="form-control form1" type="text" placeholder="Name" [(ngModel)]="partNameCreate" name="name">
+            <textarea class="form-control form1" id="exampleFormControlTextarea1" rows="3"
+                      placeholder="Description" [(ngModel)]="description" name="description"></textarea>
+            <input type="number" class="form-control-number form1" placeholder="Cena" [(ngModel)]="price" name="price">
+            <button type="button" class="btn btn-primary btn-md" (click)="onPartCreate({ name: partNameCreate, description: description, price: price })">Dodaj część</button>
+          </form>
         </div>
       </div>
     </div>
