@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AuthService } from './auth.service';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -10,6 +10,7 @@ import {RouterOutlet} from "@angular/router";
 import { ShopComponent } from './shop/shop.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {FormsModule} from "@angular/forms";
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ShopComponent
+    ShopComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import {FormsModule} from "@angular/forms";
     RouterOutlet,
     FormsModule,
   ],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
