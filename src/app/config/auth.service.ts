@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
@@ -17,31 +17,39 @@ export class AuthService {
 
   // the username of the logged in user
   public username: any;
+  public data: any;
 
   // error messages received from the login attempt
   public errors: any = [];
 
-  constructor(private http: HttpClient) {
-    this.httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    };
+  constructor(private http: HttpClient, ) {
+
   }
 
   public login(user: object) {
     console.log(user)
-    this.http.post('http://localhost:8001/api-user-login/', user, this.httpOptions).subscribe(
-      (data) =>{
-        console.log(data)
+    this.http.post('http://localhost:8001/api-token-auth/', user, this.httpOptions).subscribe(
+      (data: any) => {
+        this.updateData(data['token']);
+        localStorage.setItem('user', data['token'])
       },
       err => {
         this.errors = err['error'];
       },
-
     );
   }
 
   // Refreshes the JWT token, to extend the time the user is logged in
-
+  public refreshToken() {
+    this.http.post('http://localhost:8001/api-token-refresh/', JSON.stringify({token: this.token}), this.httpOptions).subscribe(
+      (data: any) => {
+        this.updateData(data['token']);
+      },
+      err => {
+        this.errors = err['error'];
+      }
+    );
+  }
 
   public logout() {
     this.token = null;
@@ -50,6 +58,8 @@ export class AuthService {
   }
 
   private updateData(token: string) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     this.token = token;
     this.errors = [];
 
