@@ -6,24 +6,20 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class AuthService {
 
-  // http options used for making API calls
   private httpOptions: any;
 
-  // the actual JWT token
+
   public token: any;
 
-  // the token expiration date
   public token_expires: any;
 
-  // the username of the logged in user
+
   public username: any;
   public data: any;
 
-  // error messages received from the login attempt
   public errors: any = [];
 
   constructor(private http: HttpClient, ) {
-
   }
 
   public login(user: object) {
@@ -39,7 +35,6 @@ export class AuthService {
     );
   }
 
-  // Refreshes the JWT token, to extend the time the user is logged in
   public refreshToken() {
     this.http.post('http://localhost:8001/api-token-refresh/', JSON.stringify({token: this.token}), this.httpOptions).subscribe(
       (data: any) => {
@@ -52,6 +47,7 @@ export class AuthService {
   }
 
   public logout() {
+    localStorage.setItem('logged', 'false')
     this.token = null;
     this.token_expires = null;
     this.username = null;
@@ -61,6 +57,7 @@ export class AuthService {
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     this.token = token;
+    localStorage.setItem('logged', 'true')
     this.errors = [];
 
     // decode the token to read the username and expiration timestamp

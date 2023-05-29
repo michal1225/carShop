@@ -10,15 +10,17 @@ export class PartService {
   private httpOptions: any;
   private path: string = 'http://127.0.0.1:8001/shop/parts'
   constructor(private http: HttpClient, private _userService: AuthService) {
-    this.httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'JWT ' + localStorage.getItem('user'),})
-    };
+    if(localStorage.getItem('user'))
+      this.httpOptions = {
+        headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'JWT ' + localStorage.getItem('user'),})
+      };
+
   }
 
   createPart(part: { name: string, description: string, price: number }) {
     console.log(part)
-    const headers = new HttpHeaders({'CarParts': 'Part'})
-    this.http.post<{ name: string }>(this.path, part, {headers: headers}).subscribe((res) => {
+
+    this.http.post<{ name: string }>(this.path, part, this.httpOptions).subscribe((res) => {
       console.log(res)
     })
   }

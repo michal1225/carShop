@@ -11,6 +11,7 @@ import { ShopComponent } from './shop/shop.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { LoginComponent } from './login/login.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     HomeComponent,
     ShopComponent,
-    LoginComponent
+    LoginComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

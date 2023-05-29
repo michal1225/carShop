@@ -14,12 +14,16 @@ export class ShopComponent implements OnInit {
   partNameCreate: any;
   description: any;
   price: any;
+  logged: any;
 
   constructor(private http: HttpClient, private partService: PartService) {
+    this.logged = false
   }
 
   ngOnInit() {
     this.fetchParts("")
+    if (localStorage.getItem('logged'))
+      this.logged = localStorage.getItem('logged')
   }
 
   fetchParts(name: string) {

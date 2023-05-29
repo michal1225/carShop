@@ -1,7 +1,14 @@
 <section>
   <article class="shop">
     <div class="container">
-      <div class="row">
+      <div class="row" [hidden]="logged">
+        <div class="col-sm-12">
+          <h1>
+            Jesteś niezalogowany!
+          </h1>
+        </div>
+      </div>
+      <div class="row" [hidden]="!logged">
         <div class="col-md-12 col-xl-6">
           <div class="form-outline">
             <label class="form-label" for="form1">Search</label>
@@ -17,7 +24,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-6 col-md-12">
+        <div class="col-xl-6 col-md-12" [hidden]="!logged">
           <h3>Dodaj część</h3>
           <form>
             <input class="form-control form1" type="text" placeholder="Name" [(ngModel)]="partNameCreate" name="name">
