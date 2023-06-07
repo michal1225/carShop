@@ -47,10 +47,13 @@ export class AuthService {
   }
 
   public logout() {
+    this.http.get<Location[]>('localhost:8001/users/logout')
     localStorage.setItem('logged', 'false')
+    localStorage.setItem('user', 'false')
     this.token = null;
     this.token_expires = null;
     this.username = null;
+
   }
 
   private updateData(token: string) {

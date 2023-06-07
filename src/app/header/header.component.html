@@ -6,8 +6,9 @@
         <ul class="menuu">
           <li class="menuitem"><a routerLink="">Home</a></li>
           <li class="menuitem"><a routerLink="/shop">Shop</a></li>
-          <li class="menuitem"><a routerLink="/login">Login</a></li>
+          <li class="menuitem" *ngIf="!logged"><a routerLink="/login">Login</a></li>
           <li class="menuitem"><a routerLink="/contact">Contact Us</a></li>
+          <li class="menuitem" *ngIf="logged"><button (click)="logout()" routerLink="">Logout</button></li>
         </ul>
 
       </div>

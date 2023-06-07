@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AuthService} from "./config/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'carShop';
+
 }

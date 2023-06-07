@@ -120,6 +120,15 @@ header {
   background: #ff9438;
   border: none
 }
+ul button{
+  background: #2f2f2f;
+  border: none;
+  list-style-type: none;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff
+}
 
 .section2 {
   font-family: "Ubuntu", sans-serif;
